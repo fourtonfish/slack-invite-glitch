@@ -22,8 +22,13 @@ CONTACT='your@email.com'
 
 3. Enjoy!
 
+Also, maybe update the `coc.handlebars` file?
 
 ## TODO
 
+- Move images to `assets`
+  - The `assets` folder doesn't seem to support SVGs
+- Add a more generic favicon.
 - Clean up the generated CSS file.
 - Add a proper footer.
+- Add explanation of the `.handlebars` files.
