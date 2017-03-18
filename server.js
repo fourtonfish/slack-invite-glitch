@@ -42,23 +42,23 @@ app.post('/invite', function(req, res) {
         body = JSON.parse(body);
         if (body.ok) {
           community_info.user_email = req.body.email;
-            res.render('success.handlebars', community_info);
+            res.render('success', community_info);
         } else {
           var error_message = body.error;
           switch(error_message){
             case 'already_invited':
             case 'sent_recently':
-              res.render('recently-invited.handlebars', community_info);
+              res.render('recently-invited', community_info);
               break;
             case 'already_in_team':
-              res.render('already-member.handlebars', community_info);
+              res.render('already-member', community_info);
               break;
             case 'invalid_email':
-              res.render('invalid-email.handlebars', community_info);
+              res.render('invalid-email', community_info);
             break;            
             default:
               community_info.error_message = error_message;
-              res.render('invalid-email.handlebars', community_info);
+              res.render('invalid-email', community_info);
             break;
           }
         }
