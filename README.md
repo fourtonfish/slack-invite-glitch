@@ -18,17 +18,17 @@ SLACK_URL='https://mycommunity.slack.com/'
 SLACK_TOKEN='SECRETSTUFF123'
 CONTACT='your@email.com'
 ```
+3. Update the `coc.handlebars` file?
+4. Enjoy!
 
+Optionally, you can update the `.handlebars` files manually, if you'd like to add more text, links to your social media, etc.
 
-3. Enjoy!
-
-Also, maybe update the `coc.handlebars` file?
+Also, if you add a lot of text into the footer, you might have to add extra padding to the `section` element. Look for a line that says `padding: 0 0 5em;` inside the`public/css/styles.css` stylesheet.
 
 ## TODO
 
 - Move images to `assets`
   - The `assets` folder doesn't seem to support SVGs
-- Add a more generic favicon.
-- Clean up the generated CSS file.
-- Add a proper footer.
+- Add a more generic favicon/images.
+- Clean up the generated CSS file?
 - Add explanation of the `.handlebars` files.

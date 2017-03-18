@@ -26,7 +26,11 @@
     <div id="content-inner">
       {{{body}}}
     </div>
-  </section>
+    <footer class="shifted">
+      <p>&copy; 2017 {{community_name}}</p>
+      <!-- Maybe include links to your social media profiles, etc. -->
+    </footer>
+</section>
   <script>
     var node = document.createElement('style');
     node.innerHTML = '.shifted{-webkit-transition:all 1s;transition:all 1s;-webkit-transform:translate(0,10px);-ms-transform:translate(0,10px);transform:translate(0,10px);opacity:0}';
