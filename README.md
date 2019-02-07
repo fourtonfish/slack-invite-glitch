@@ -4,7 +4,6 @@ This is a simple Slack auto-invite page based on the one used on [botmakers.org]
 
 [See preview.](slack-invite-glitch)
 
-
 ## Setup
 
 1. Get your [Slack token](https://api.slack.com/custom-integrations/legacy-tokens).
