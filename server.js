@@ -30,39 +30,51 @@ app.get('/coc', function (req, res) {
 
 app.post('/invite', function(req, res) {
   if (req.body.email) {
-    request.post({
-        url: process.env.SLACK_URL + '/api/users.admin.invite',
-        form: {
-          email: req.body.email,
-          token: process.env.SLACK_TOKEN,
-          set_active: true
-        }
-      }, function(err, httpResponse, body) {
-        if (err) { return res.send('Error:' + err); }
-        body = JSON.parse(body);
-        if (body.ok) {
-          community_info.user_email = req.body.email;
-            res.render('success', community_info);
-        } else {
-          var error_message = body.error;
-          switch(error_message){
-            case 'already_invited':
-            case 'sent_recently':
-              res.render('recently-invited', community_info);
+    const domain = req.body.email.replace(/.*@/, '');
+    let email_domain_blacklist = [];
+
+    if (process.env.EMAIL_DOMAIN_BLACKLIST){
+      email_domain_blacklist = process.env.EMAIL_DOMAIN_BLACKLIST.split(',');
+    }
+
+    if (email_domain_blacklist.length > 0 && email_domain_blacklist.indexOf(domain) !== -1){
+      res.render('invalid-email', community_info);
+    } else {
+      request.post({
+          url: process.env.SLACK_URL + '/api/users.admin.invite',
+          form: {
+            email: req.body.email,
+            token: process.env.SLACK_TOKEN,
+            set_active: true
+          }
+        }, function(err, httpResponse, body) {
+          if (err) { return res.send('Error:' + err); }
+          body = JSON.parse(body);
+          if (body.ok) {
+            community_info.user_email = req.body.email;
+              res.render('success', community_info);
+          } else {
+            var error_message = body.error;
+            switch(error_message){
+              case 'already_invited':
+              case 'sent_recently':
+                res.render('recently-invited', community_info);
+                break;
+              case 'already_in_team':
+                res.render('already-member', community_info);
+                break;
+              case 'invalid_email':
+                res.render('invalid-email', community_info);
+              break;            
+              default:
+                community_info.error_message = error_message;
+                res.render('invalid-email', community_info);
               break;
-            case 'already_in_team':
-              res.render('already-member', community_info);
-              break;
-            case 'invalid_email':
-              res.render('invalid-email', community_info);
-            break;            
-            default:
-              community_info.error_message = error_message;
-              res.render('invalid-email', community_info);
-            break;
+            }
           }
         }
-      });
+      );
+    }
   } else {
     res.status(400).send('Don\'t forget your email!');
   }

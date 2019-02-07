@@ -1,10 +1,8 @@
 # Auto-invite page for your Slack community
-***WORK IN PROGRESS***
 
 This is a simple Slack auto-invite page based on the one used on [botmakers.org](https://botmakers.org/).
 
 [See preview.](slack-invite-glitch)
-
 
 ## Setup
 

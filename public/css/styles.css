@@ -12,6 +12,7 @@ body {
   font-size: 1.2em;
   margin: 0;
   height: 100%;
+  position: relative;
 }
 body {
   background: url('../images/background/geometry-alt.png');
@@ -177,6 +178,26 @@ a.hashtag:hover {
 }
 .center-text {
   text-align: center;
+}
+.btn-login {
+  font-family:'Merriweather Sans';
+  font-size:.87em;
+  position:absolute;
+  z-index:10;
+  top:10px;
+  right:10px;
+  padding:10px 20px;
+  text-decoration:none;
+  background-color:#170c0c;
+  color:#fff
+}
+.btn-login:hover {
+  color:#fff;
+  background-color:#281d1d
+}
+.btn-login,.btn-login:hover {
+  -webkit-transition:background-color .1s;
+  transition:background-color .1s
 }
 /* Animations */
 .unshifted {
