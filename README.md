@@ -15,6 +15,7 @@ COMMUNITY_DESCRIPTION='Short description of your community.'
 SLACK_URL='https://mycommunity.slack.com/'
 SLACK_TOKEN='SECRETSTUFF123'
 CONTACT='your@email.com'
+EMAIL_DOMAIN_BLACKLIST="mailinator.com,temporarily.de,gamergate.us"
 ```
 3. Update the `coc.handlebars` file?
 4. Enjoy!
